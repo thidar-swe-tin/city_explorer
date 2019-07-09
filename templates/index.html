@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<title>City Explorer</title>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-store" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+crossorigin=""/>
+
+<!-- Icons -->
+<link rel="stylesheet" href="/static/css/ionicons.min.css">
+<link rel="stylesheet" href="/static/css/leaflet.extra-markers.min.css">
+<link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" href="/static/css/animate.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+body, html {
+  height: 100%;
+  line-height: 1.8;
+}
+/* Full height image header */
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  min-height: 100%;
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+</style>
+</head>
+
+<body>
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <a href="/" class="w3-bar-item w3-button w3-wide">City Explorer</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+      <a href="/seasons" class="w3-bar-item w3-button"><i class="fas fa-calendar"></i> SEASONS</a>
+      <a href="/map/nyc" class="w3-bar-item w3-button"><i class="far fa-map"></i> MAP</a>
+      <a href="/comparison" class="w3-bar-item w3-button"><i class="fas fa-industry"></i> COMPARISON</a>
+      <a href="/team" class="w3-bar-item w3-button"><i class="fa fa-user"></i> TEAM</a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon --><a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+  <a href="/seasons" onclick="w3_close()" class="w3-bar-item w3-button">SEASONS</a>
+  <a href="/map/nyc" onclick="w3_close()" class="w3-bar-item w3-button">MAP</a>
+  <a href="/comparison" onclick="w3_close()" class="w3-bar-item w3-button">COMPARISON</a>
+  <a href="/team" onclick="w3_close()" class="w3-bar-item w3-button">TEAM</a>
+</nav>
+
+<!-- Header with full-height image -->
+<!-- HOME PAGE Section -->
+<header class="bgimg-1 w3-display-container w3-grayscale-min worldmap" id="home">
+
+<div class="w3-display-middle w3-margin-top w3-center">
+    <div class="w3-display-middle w3-margin-top w3-center">
+        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="100%" style="width: 1000px; height:300px">
+          <path fill="#033577" d="M210.29,394.89c-6,3.3-17.9,6.6-33.19,6.6-35.43,0-62.1-24.75-62.1-70.33,0-43.52,26.67-73,65.63-73,15.67,0,25.55,3.71,29.84,6.18L206.55,279c-6.15-3.29-14.92-5.77-25.35-5.77-29.47,0-49,20.83-49,57.33,0,34,17.71,55.9,48.29,55.9,9.89,0,20-2.28,26.48-5.78Z" transform="translate(-115 -253)"/>
+          <path class="path" fill="#FFFFFF" stroke="#FFAC38" stroke-width="4" stroke-miterlimit="10" d="M247.82,271.56c.19,6.18-3.92,11.14-10.44,11.14-5.79,0-9.88-5-9.88-11.14,0-6.39,4.28-11.35,10.25-11.35C243.9,260.21,247.82,265.17,247.82,271.56ZM229.55,399.42V299.61H246v99.81Z" transform="translate(-115 -253)"/>
+          <path fill="#033577" d="M293,270.94v28.67h23.49v13.81H293v53.83c0,12.38,3.16,19.39,12.3,19.39a33.13,33.13,0,0,0,9.51-1.24l.75,13.61c-3.17,1.45-8.21,2.48-14.55,2.48-7.64,0-13.8-2.69-17.71-7.63-4.66-5.37-6.34-14.23-6.34-26V313.42H263V299.61h14V275.69Z" transform="translate(-115 -253)"/>
+          <path class="path" fill="#FFFFFF" stroke="#FEC5C3" stroke-width="4" stroke-miterlimit="10" d="M342.6,299.61l19.77,59c2.05,6.6,4.29,14.44,5.78,20.41h.37c1.68-6,3.54-13.61,5.78-20.83l17.9-58.56h17.34l-24.61,71.15c-11.75,34.23-19.77,51.76-31,62.49-8,7.84-16,10.93-20.13,11.75l-4.1-15.26a42.44,42.44,0,0,0,14.36-8.86,54.77,54.77,0,0,0,13.79-20.22,14,14,0,0,0,1.31-4.33,17.45,17.45,0,0,0-1.12-4.74l-33.38-92Z" transform="translate(-115 -253)"/>
+          <path fill="#033577" d="M529.69,334.25H480.84v50.12h54.44v15.05H464.62v-139h67.87v15.06H480.84v43.93h48.85Z" transform="translate(-115 -253)"/>
+          <path class="path" fill="#FFFFFF" stroke="#E765FE" stroke-width="4" stroke-miterlimit="10" d="M563.49,299.61l12.86,21.44c3.36,5.57,6.15,10.72,9.14,16.3h.56c3-6,6-11.14,9-16.5l12.68-21.24h17.71l-30.76,48.25,31.7,51.56H607.68L594.44,377c-3.54-5.78-6.52-11.35-9.7-17.33h-.37c-3,6-6.15,11.34-9.51,17.33l-13.05,22.47H543.73l32.06-50.94-30.58-48.87Z" transform="translate(-115 -253)"/>
+          <path fill="#033577" d="M642.22,332.19c0-12.78-.37-23.09-.74-32.58h14.73l.75,17.11h.37c6.71-12.17,17.34-19.38,32.07-19.38,21.81,0,38.23,20.41,38.23,50.73,0,35.89-19.77,53.62-41,53.62-11.93,0-22.38-5.78-27.78-15.67h-.37v54.24H642.22Zm16.23,26.6a45.36,45.36,0,0,0,.74,7.43c3,12.58,12.87,21.24,24.61,21.24,17.35,0,27.41-15.67,27.41-38.56,0-20-9.51-37.13-26.85-37.13-11.19,0-21.63,8.87-24.8,22.48a32.9,32.9,0,0,0-1.11,7.43Z" transform="translate(-115 -253)"/>
+          <path class="path" fill="#FFFFFF" stroke="#FFAC38" stroke-width="4" stroke-miterlimit="10" d="M748.37,253h16.41V399.42H748.37Z" transform="translate(-115 -253)"/>
+          <path fill="#033577" d="M874.07,348.69c0,36.91-23.12,53-44.93,53-24.43,0-43.27-19.8-43.27-51.35,0-33.41,19.77-53,44.75-53C856.55,297.34,874.07,318.16,874.07,348.69Zm-71.6,1c0,21.86,11.38,38.36,27.41,38.36,15.66,0,27.41-16.29,27.41-38.77,0-16.91-7.64-38.36-27-38.36S802.47,330.75,802.47,349.72Z" transform="translate(-115 -253)"/>
+          <path class="path" fill="#FFFFFF" stroke="#FEC5C3" stroke-width="4" stroke-miterlimit="10" d="M894.82,330.75c0-11.75-.18-21.86-.74-31.14h14.35L909,319.2h.74c4.1-13.4,14-21.86,25-21.86a16.15,16.15,0,0,1,4.66.61v17.12a22.37,22.37,0,0,0-5.58-.62c-11.56,0-19.77,9.7-22,23.31a56.81,56.81,0,0,0-.74,8.46v53.2H894.82Z" transform="translate(-115 -253)"/>
+          <path fill="#033577" d="M963.11,352.82c.37,24.54,14.53,34.64,30.95,34.64,11.74,0,18.83-2.27,25-5.16l2.8,13c-5.78,2.89-15.66,6.19-30,6.19-27.79,0-44.38-20.21-44.38-50.33s16-53.82,42.33-53.82c29.46,0,37.29,28.67,37.29,47a77.37,77.37,0,0,1-.56,8.46Zm48.1-13c.19-11.55-4.29-29.49-22.75-29.49-16.59,0-23.86,16.91-25.17,29.49Z" transform="translate(-115 -253)"/>
+          <path class="path" fill="#FFFFFF" stroke="#E765FE" stroke-width="4" stroke-miterlimit="10" d="M1047.43,330.75c0-11.75-.19-21.86-.74-31.14H1061l.56,19.59h.75c4.1-13.4,14-21.86,25-21.86a16.31,16.31,0,0,1,4.67.61v17.12a22.57,22.57,0,0,0-5.59-.62c-11.57,0-19.77,9.7-22,23.31a56.73,56.73,0,0,0-.75,8.46v53.2h-16.22Z" transform="translate(-115 -253)"/>
+        </svg>
+    </div>
+  </div>
+</header>
+
+<!-- Modal for full size images on click-->
+<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+  <span class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright" title="Close Modal Image">×</span>
+  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+    <img id="img01" class="w3-image">
+    <p id="caption" class="w3-opacity w3-large"></p>
+  </div>
+</div>
+
+
+</body></html>

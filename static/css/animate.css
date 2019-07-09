@@ -1,0 +1,76 @@
+.path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: dash 5s linear alternate infinite;
+    /* , shake 5s cubic-bezier(.36,.07,.19,.97) both infinite;
+    animation-delay:10s, 0s;
+    backface-visibility: hidden;
+    position: relative; */
+  }
+
+  @keyframes shake {
+    10%, 90% {
+      position: relative;
+      transform: translate3d(-1px, 0, 0);
+    }
+  
+    20%, 80% {
+      position: relative;
+      transform: translate3d(2px, 0, 1px);
+    }
+  
+    30%, 50%, 70% {
+      position: relative;
+      transform: translate3d(-4px, 0, -2px);
+    }
+  
+    40%, 60% {
+      position: relative;
+      transform: translate3d(4px, 0, 2px);
+    }
+  }
+  
+  @keyframes dash {
+    from {
+      stroke-dashoffset: 1000;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  .div_fade {
+    animation: fade 10s;
+  }
+
+  @keyframes fade {
+    from {
+      opacity:0;
+    }
+    to {
+      opacity:1;
+    }
+  }
+
+  /* .div_fade {
+    transition: all 10s ease-in;
+  } */
+
+  .worldmap {
+    background: url(/static/images/World_map.svg) no-repeat top left;
+    background-size: contain;
+    animation: fade 10s;
+  }
+
+  #fade_out {
+    animation: fade_out 10s;
+  }
+
+  @keyframes fade_out {
+    from {
+      opacity:1;
+    }
+    to {
+      opacity:0;
+    }
+  }
